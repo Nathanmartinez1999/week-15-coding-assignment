@@ -1,6 +1,8 @@
 import React from "react";
 import './App.css';
 
+import House from "./house";
+
 const HOUSES_ENDPOINT = 'https://ancient-taiga-31359.herokuapp.com/api/houses';
 
 export default class App extends React.Component {
@@ -25,10 +27,10 @@ export default class App extends React.Component {
 
   componentDidMount() {
     fetch(HOUSES_ENDPOINT)
-      .them(res => res.json())
-      .them(data => {
-        this.state({
-          houses.data
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          houses: data
         });
       });
   }
@@ -48,10 +50,10 @@ export default class App extends React.Component {
           return state;
         });
       });
-    e.preventDefult();
+    //e.preventDefult();
   }
 
-  addRoom(e, house, room) {
+  addNewRoom(e, house, room) {
     house.rooms.push(room)
     updateHouse(house)
       .then(() => {
@@ -65,17 +67,17 @@ export default class App extends React.Component {
           return state;
         });
       });
-    e.preventDefult();
+    // e.preventDefult();
   }
 
 }
 
 function updateHouse(houses) {
-  return fetch(`${HOUSES_ENDPOINT}/${house._id}`, {
+  return fetch(`${HOUSES_ENDPOINT}/${House._id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
     },
-    body: JSON.stringify(house);
+    body: JSON.stringify(House)
   });
 }
