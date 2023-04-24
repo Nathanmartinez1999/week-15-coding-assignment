@@ -50,7 +50,7 @@ export default class App extends React.Component {
           return state;
         });
       });
-    e.preventDefult();
+
   }
 
 
@@ -68,7 +68,7 @@ export default class App extends React.Component {
           return state;
         });
       });
-    e.preventDefult();
+
   }
 
 }
