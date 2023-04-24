@@ -50,11 +50,12 @@ export default class App extends React.Component {
           return state;
         });
       });
-    //e.preventDefult();
+    e.preventDefult();
   }
 
+
   addNewRoom(e, house, room) {
-    house.rooms.push(room)
+    house.push(room);
     updateHouse(house)
       .then(() => {
         this.setState(state => {
@@ -67,12 +68,12 @@ export default class App extends React.Component {
           return state;
         });
       });
-    // e.preventDefult();
+    e.preventDefult();
   }
 
 }
 
-function updateHouse(houses) {
+function updateHouse(house) {
   return fetch(`${HOUSES_ENDPOINT}/${House._id}`, {
     method: 'PUT',
     headers: {
